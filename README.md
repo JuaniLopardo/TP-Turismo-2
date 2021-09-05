@@ -9,9 +9,11 @@ Los archivos de entrada para cargar datos de usuarios, atracciones y promociones
 
 En las promociones, los ultimos valores separados por coma de una linea se toman como las atracciones de esa promocion, y no hay limite.
 
-Formato para PromocionPorcentual: tipoDePromocion, nombre, tipoDeAtraccion, porcentajeDeDescuento, promocion1, promocion2, promocion3, (etc)
-Formato para PromocionAbsoluta: tipoDePromocion, nombre, tipoDeAtraccion, costo, promocion1, promocion2, promocion3, (etc)
-Formato para PromocionAxB: tipoDePromocion, nombre, tipoDeAtraccion, promocionGratuita, promocion1, promocion2, promocion3 (etc)
+Formato para `PromocionPorcentual`: tipoDePromocion, nombre, tipoDeAtraccion, porcentajeDeDescuento, promocion1, promocion2, promocion3, (etc)
+
+Formato para `PromocionAbsoluta`: tipoDePromocion, nombre, tipoDeAtraccion, costo, promocion1, promocion2, promocion3, (etc)
+
+Formato para `PromocionAxB`: tipoDePromocion, nombre, tipoDeAtraccion, promocionGratuita, promocion1, promocion2, promocion3 (etc)
 
 Ejemplo:
 
