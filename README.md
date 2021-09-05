@@ -7,20 +7,22 @@ Los archivos de entrada para cargar datos de usuarios, atracciones y promociones
 
 ### Promociones.csv
 
-En las promociones, los ultimos valores separados por coma de una linea se toman como las atracciones de esa promocion, y no hay limite.
+En las promociones, el ultimo valor separado por coma es la lista de atracciones que incluye la promocion, separadas por un signo `+` en lugar de una coma. 
 
-Formato para `PromocionPorcentual`: tipoDePromocion, nombre, tipoDeAtraccion, porcentajeDeDescuento, promocion1, promocion2, promocion3, (etc)
+El cuarto valor depende del tipo de promocion. 
 
-Formato para `PromocionAbsoluta`: tipoDePromocion, nombre, tipoDeAtraccion, costo, promocion1, promocion2, promocion3, (etc)
+En `PromocionPorcentual`, el cuarto valor es el porcentaje de descuento. 
 
-Formato para `PromocionAxB`: tipoDePromocion, nombre, tipoDeAtraccion, promocionGratuita, promocion1, promocion2, promocion3 (etc)
+En `PromocionAbsoluta`, el cuarto valor es el costo total. 
+
+En `PromocionAxB`, el cuarto valor es la atraccion que se obtiene gratis al comprar las otras.
 
 Ejemplo:
 
 ```
 Porcentual, Pack aventura, Aventura, 20, Bosque Negro, Mordor
 Absoluta, Pack degustacion, Degustación, 36, Lothlórien, La Comarca
-AxB, Pack paisajes, Paisaje, Erebor, Minas Tirith, Abismo de Helm
+AxB, Pack paisajes, Paisaje, Erebor, Minas Tirith + Abismo de Helm + Erebor
 ```
 
 ### Usuarios.csv
