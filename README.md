@@ -3,7 +3,7 @@ Trabajo práctico en grupo.
 
 ## Formato de Entrada
 
-Los archivos de entrada para cargar datos de usuarios, atracciones y promociones estan en formato [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas).
+Los archivos de entrada para cargar datos de usuarios, atracciones y promociones estan en una especie de formato [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas) donde no se aceptan comas para nada mas que separar los valores.
 
 ### Promociones.csv
 
