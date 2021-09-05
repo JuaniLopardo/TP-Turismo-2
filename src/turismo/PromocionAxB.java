@@ -12,21 +12,21 @@ public class PromocionAxB extends Promocion {
 	}
 
 	@Override
+	public String getMensajeDePresentacionAlUsuario() {
+		// Mensaje para presentar la promocion. Ejemplo: "Comprando Minas Tirith y el Abismo de Helm, Erebor es gratis."
+		return "";
+	}
+
+	@Override
 	public double getCosto() {
 		double total = 0;
-		for (Atraccion atraccion : this.getAtracciones()) {
+		for (Atraccion atraccion : this.getAtraccionesQueIncluye()) {
 			if (atraccion.getNombre() == this.atraccionDeRegalo.getNombre()) {
 				continue;
 			}
 			total += atraccion.getCosto();
 		}
 		return total;
-	}
-
-	@Override
-	public String getMensajeDePresentacionAlUsuario() {
-		// Mensaje para presentar la promocion. Ejemplo: "Comprando Minas Tirith y el Abismo de Helm, Erebor es gratis."
-		return "";
 	}
 
 }

@@ -1,5 +1,7 @@
 package turismo;
 
+import java.util.List;
+
 public class Usuario {
 	
 	private String nombre;
@@ -7,11 +9,43 @@ public class Usuario {
 	private double tiempoDisponible;
 	private String tipoDeAtraccionPreferida;
 	
+	private List<Atraccion> atraccionesAdquiridas;
+	private List<Ofertable> ofertasAceptadas;
+	
 	public Usuario(String nombre, double presupuesto, double tiempoDisponible, String tipoDeAtraccionPreferida) {
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoDeAtraccionPreferida = tipoDeAtraccionPreferida;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public boolean podriaAceptarOferta(Ofertable oferta) {
+		return oferta.getCosto() < this.presupuesto && oferta.getDuracion() < this.tiempoDisponible;
+	}
+	
+	public boolean prefiereEsteTipoDeOferta(Ofertable oferta) {
+		return oferta.getTipo().equals(this.getTipoDeAtraccionPreferida());
+	}
+	
+	public void aceptarOferta(Ofertable oferta) {
+		this.presupuesto -= oferta.getCosto();
+		this.tiempoDisponible -= oferta.getDuracion();
+		if (oferta instanceof Promocion) {
+			for (Atraccion atraccion: ((Promocion) oferta).getAtraccionesQueIncluye()) {
+				this.atraccionesAdquiridas.add(atraccion);
+			}
+		} else {
+			this.atraccionesAdquiridas.add((Atraccion) oferta);
+		}
+		this.ofertasAceptadas.add(oferta);
+	}
+	
+	public boolean yaTieneAtraccion(Atraccion atraccion) {
+		return this.atraccionesAdquiridas.contains(atraccion);
 	}
 
 	public double getPresupuesto() {

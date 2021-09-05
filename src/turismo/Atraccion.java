@@ -1,45 +1,49 @@
 package turismo;
 
-public class Atraccion {
+public class Atraccion extends Ofertable {
 	
-	private String nombre;
+	private int cupo;
 	private double costo;
 	private double duracion;
-	private int cupoDiario;
-	private String tipo;
 	
 	public Atraccion(String nombre, double costo, double duracion, int cupoDiario, String tipo) {
-		this.nombre = nombre;
+		super(nombre, tipo);
 		this.costo = costo;
 		this.duracion = duracion;
-		this.cupoDiario = cupoDiario;
-		this.tipo = tipo;
+		this.cupo = cupoDiario;
 	}
 	
-	public String getNombre() {
-		return nombre;
+	public boolean tieneCupo() {
+		return this.cupo > 0;
 	}
-
-	public double getCosto() {
-		return costo;
+	
+	public void reducirCupo() {
+		this.cupo -= 1;
 	}
-
-	public double getDuracion() {
-		return duracion;
-	}
-
+	
 	public int getCupoDiario() {
-		return cupoDiario;
-	}
-
-	public String getTipo() {
-		return tipo;
+		return this.cupo;
 	}
 
 	@Override
 	public String toString() {
-		return "Atraccion [nombre=" + nombre + ", costo=" + costo + ", duracion=" + duracion + ", cupoDiario="
-				+ cupoDiario + ", tipo=" + tipo + "]";
+		return "Atraccion [nombre=" + this.getNombre() + ", costo=" + costo + ", duracion=" + duracion + ", cupoDiario="
+				+ cupo + ", tipo=" + this.getTipo() + "]";
+	}
+
+	@Override
+	public double getCosto() {
+		return this.costo;
+	}
+
+	@Override
+	public double getDuracion() {
+		return this.duracion;
+	}
+
+	@Override
+	public String getMensajeDePresentacionAlUsuario() {
+		return "";
 	}
 	
 }
