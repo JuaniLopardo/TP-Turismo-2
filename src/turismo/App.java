@@ -66,13 +66,20 @@ public class App {
 		for (List<String> datosDePromocion : listaDeDatosDePromociones) {
 			Promocion promocion;
 			
+			String nombre = datosDePromocion.get(1);
+			String tipo = datosDePromocion.get(2);
+			List<Atraccion> atraccionesEnPromocion = getListaDeAtraccionesDeString(datosDePromocion.get(4), tipo);
+			
 			String tipoDePromocion = datosDePromocion.get(0);
 			if (tipoDePromocion.equals(PROMOCION_PORCENTUAL)) {
-				promocion = getNuevaPromocionPorcentual(datosDePromocion);
+				double porcentajeDescuento = Double.parseDouble(datosDePromocion.get(3));
+				promocion = new PromocionPorcentual(nombre, tipo, atraccionesEnPromocion, porcentajeDescuento);
 			} else if (tipoDePromocion.equals(PROMOCION_ABSOLUTA)) {
-				promocion = getNuevaPromocionAbsoluta(datosDePromocion);
+				double costoTotal = Double.parseDouble(datosDePromocion.get(3));
+				promocion = new PromocionAbsoluta(nombre, tipo, atraccionesEnPromocion, costoTotal);
 			} else if (tipoDePromocion.equals(PROMOCION_AxB)) {
-				promocion = getNuevaPromocionAxB(datosDePromocion);
+				Atraccion atraccionDeRegalo = getAtraccionPorSuNombre(datosDePromocion.get(3));
+				promocion = new PromocionAxB(nombre, tipo, atraccionesEnPromocion, atraccionDeRegalo);
 			} else {
 				throw new RuntimeException("El tipo de promocion \"" + tipoDePromocion + "\" no existe.");
 			}
@@ -80,41 +87,13 @@ public class App {
 			this.promociones.add(promocion);
 		}
 	}
-
-    // Ejemplo datosDePromocion: Porcentual, Pack aventura, Aventura, 20, Bosque Negro, Mordor
-	private PromocionPorcentual getNuevaPromocionPorcentual(List<String> datosDePromocion) {
-		String nombre = datosDePromocion.get(1);
-		String tipo = datosDePromocion.get(2);
-		double porcentajeDescuento = Double.parseDouble(datosDePromocion.get(3));
-		List<Atraccion> atraccionesEnPromocion = getAtraccionesEnDatosDePromocion(4, datosDePromocion, tipo);
-		
-		return new PromocionPorcentual(nombre, tipo, atraccionesEnPromocion, porcentajeDescuento);
-	}
 	
-	// Ejemplo datosDePromocion: Absoluta, Pack degustacion, Degustacion, 36, Lothlorien, La Comarca
-	private PromocionAbsoluta getNuevaPromocionAbsoluta(List<String> datosDePromocion) {
-		String nombre = datosDePromocion.get(1);
-		String tipo = datosDePromocion.get(2);
-		double costoTotal = Double.parseDouble(datosDePromocion.get(3));
-		List<Atraccion> atraccionesEnPromocion = getAtraccionesEnDatosDePromocion(4, datosDePromocion, tipo);
-		
-		return new PromocionAbsoluta(nombre, tipo, atraccionesEnPromocion, costoTotal);
-	}
-	
-	// Ejemplo datosDePromocion: AxB, Pack paisajes, Paisajes, Erebor, Minas Tirith, Abismo de Helm
-	private PromocionAxB getNuevaPromocionAxB(List<String> datosDePromocion) {
-		String nombre = datosDePromocion.get(1);
-		String tipo = datosDePromocion.get(2);
-		Atraccion atraccionDeRegalo = getAtraccionPorSuNombre(datosDePromocion.get(3));
-		List<Atraccion> atraccionesEnPromocion = getAtraccionesEnDatosDePromocion(4, datosDePromocion, tipo);
-		
-		return new PromocionAxB(nombre, tipo, atraccionesEnPromocion, atraccionDeRegalo);
-	}
-	
-	private List<Atraccion> getAtraccionesEnDatosDePromocion(int indiceComienzo, List<String> datosDePromocion, String tipo) {
+	private List<Atraccion> getListaDeAtraccionesDeString(String listaDeAtraccionesString, String tipo) {
 		List<Atraccion> atraccionesEnPromocion = new ArrayList<Atraccion>();
-		for (int i = indiceComienzo; i < datosDePromocion.size(); i++) {
-			Atraccion atraccion = getAtraccionPorSuNombre(datosDePromocion.get(i));
+
+		// Se usa "\\+" para decir "el signo +" porque el signo + es un caracter reservado en Regex
+		for (String nombreDeAtraccion : listaDeAtraccionesString.split("\\+")) {
+			Atraccion atraccion = getAtraccionPorSuNombre(nombreDeAtraccion.trim()); // .trim() Le saca espacios en blanco al principio y al final del String.
 			
 			if (!atraccion.getTipo().equals(tipo)) {
 				throw new RuntimeException("Todas las atracciones de una promocion deben ser del mismo tipo. Esperado: \"" + atraccion.getTipo() +  "\". Obtenido: \"" + tipo +  "\"");
@@ -122,6 +101,7 @@ public class App {
 			
 			atraccionesEnPromocion.add(atraccion);
 		}
+		
 		return atraccionesEnPromocion;
 	}
 	
@@ -168,6 +148,9 @@ public class App {
 		
 		BufferedReader bufferedReader = new BufferedReader(new FileReader(nombreDeArchivo));
 		String linea = bufferedReader.readLine();
+		// Ignorar la primer linea CSV
+		linea = bufferedReader.readLine();
+		
 		while (linea != null) {
 			List<String> valoresEnLinea = new ArrayList<String>();
 			

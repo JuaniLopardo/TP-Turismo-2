@@ -1,3 +1,4 @@
-Porcentual, Pack aventura, Aventura, 20, Bosque Negro, Mordor
-Absoluta, Pack degustacion, Degustación, 36, Lothlórien, La Comarca
-AxB, Pack paisajes, Paisaje, Erebor, Minas Tirith, Abismo de Helm
+Tipo de Promocion, Nombre, Tipo de Atraccion, Informacion Especifica Segun Tipo de Promocion, Lista de Atracciones
+Porcentual, Pack aventura, Aventura, 20, Bosque Negro + Mordor
+Absoluta, Pack degustacion, Degustación, 36, Lothlórien + La Comarca
+AxB, Pack paisajes, Paisaje, Erebor, Minas Tirith + Abismo de Helm
