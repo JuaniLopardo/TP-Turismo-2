@@ -1,14 +1,19 @@
 package turismo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class PromocionAxB extends Promocion {
 	
-	private Atraccion atraccionDeRegalo;
+	private List<Atraccion> atraccionesDeRegalo;
+	private List<Atraccion> atraccionesQueSeCobran;
 
-	public PromocionAxB(String nombre, String tipo, Set<Atraccion> atracciones, Atraccion atraccionDeRegalo) {
+	public PromocionAxB(String nombre, String tipo, Set<Atraccion> atracciones, Set<Atraccion> atraccionesDeRegalo) {
 		super(nombre, tipo, atracciones);
-		this.atraccionDeRegalo = atraccionDeRegalo;
+		this.atraccionesQueSeCobran = new ArrayList<Atraccion>(atracciones);
+		this.atraccionesDeRegalo = new ArrayList<Atraccion>(atraccionesDeRegalo);
+		this.atraccionesQueSeCobran.removeAll(atraccionesDeRegalo);
 	}
 
 	@Override
@@ -20,10 +25,7 @@ public class PromocionAxB extends Promocion {
 	@Override
 	public double getCosto() {
 		double total = 0;
-		for (Atraccion atraccion : this.getAtraccionesQueIncluye()) {
-			if (atraccion.getNombre() == this.atraccionDeRegalo.getNombre()) {
-				continue;
-			}
+		for (Atraccion atraccion : this.atraccionesQueSeCobran) {
 			total += atraccion.getCosto();
 		}
 		return total;

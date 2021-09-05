@@ -107,8 +107,8 @@ public class LectorArchivosEntrada {
 				double costoTotal = Double.parseDouble(datosDePromocion.get(3));
 				promocion = new PromocionAbsoluta(nombre, tipo, atraccionesEnPromocion, costoTotal);
 			} else if (tipoDePromocion.equals(PROMOCION_AxB)) {
-				Atraccion atraccionDeRegalo = getAtraccionPorSuNombre(datosDePromocion.get(3));
-				promocion = new PromocionAxB(nombre, tipo, atraccionesEnPromocion, atraccionDeRegalo);
+				Set<Atraccion> atraccionesDeRegalo = getSetDeAtraccionesDeString(datosDePromocion.get(3), tipo);
+				promocion = new PromocionAxB(nombre, tipo, atraccionesEnPromocion, atraccionesDeRegalo);
 			} else {
 				throw new RuntimeException("El tipo de promocion \"" + tipoDePromocion + "\" no existe.");
 			}
