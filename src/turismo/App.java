@@ -5,8 +5,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class App {
 	
@@ -68,7 +70,7 @@ public class App {
 			
 			String nombre = datosDePromocion.get(1);
 			String tipo = datosDePromocion.get(2);
-			List<Atraccion> atraccionesEnPromocion = getListaDeAtraccionesDeString(datosDePromocion.get(4), tipo);
+			Set<Atraccion> atraccionesEnPromocion = getSetDeAtraccionesDeString(datosDePromocion.get(4), tipo);
 			
 			String tipoDePromocion = datosDePromocion.get(0);
 			if (tipoDePromocion.equals(PROMOCION_PORCENTUAL)) {
@@ -88,8 +90,8 @@ public class App {
 		}
 	}
 	
-	private List<Atraccion> getListaDeAtraccionesDeString(String listaDeAtraccionesString, String tipo) {
-		List<Atraccion> atraccionesEnPromocion = new ArrayList<Atraccion>();
+	private Set<Atraccion> getSetDeAtraccionesDeString(String listaDeAtraccionesString, String tipo) {
+		Set<Atraccion> atraccionesEnPromocion = new HashSet<Atraccion>();
 
 		// Se usa "\\+" para decir "el signo +" porque el signo + es un caracter reservado en Regex
 		for (String nombreDeAtraccion : listaDeAtraccionesString.split("\\+")) {
@@ -126,6 +128,8 @@ public class App {
 		for (Promocion promocion : this.promociones) {
 			System.out.println(promocion);
 		}
+		
+		
 	}
 	
 	public static void main(String[] args) {

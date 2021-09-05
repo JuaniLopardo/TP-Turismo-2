@@ -1,15 +1,15 @@
 package turismo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Promocion {
 	
 	private String nombre;
-	private List<Atraccion> atracciones;
+	private Set<Atraccion> atracciones;
 	private String tipo;
 	
-	public Promocion(String nombre, String tipo, List<Atraccion> atracciones) {
+	public Promocion(String nombre, String tipo, Set<Atraccion> atracciones) {
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.atracciones = atracciones;
@@ -20,11 +20,11 @@ public abstract class Promocion {
 	}
 	
 	/*
-	 * Devuelve una nueva ArrayList para que quienes obtengan la lista de atracciones no puedan modificar
+	 * Devuelve un nuevo Set para que quienes obtengan el set de atracciones no puedan modificar
 	 * las atracciones de la instancia de Promocion.
 	 */
-	public List<Atraccion> getAtracciones() {
-		return new ArrayList<Atraccion>(this.atracciones);
+	public Set<Atraccion> getAtracciones() {
+		return new HashSet<Atraccion>(this.atracciones);
 	}
 	
 	public abstract double getCosto();

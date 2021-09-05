@@ -1,12 +1,12 @@
 package turismo;
 
-import java.util.List;
+import java.util.Set;
 
 public class PromocionAxB extends Promocion {
 	
 	private Atraccion atraccionDeRegalo;
 
-	public PromocionAxB(String nombre, String tipo, List<Atraccion> atracciones, Atraccion atraccionDeRegalo) {
+	public PromocionAxB(String nombre, String tipo, Set<Atraccion> atracciones, Atraccion atraccionDeRegalo) {
 		super(nombre, tipo, atracciones);
 		this.atraccionDeRegalo = atraccionDeRegalo;
 	}

@@ -1,12 +1,12 @@
 package turismo;
 
-import java.util.List;
+import java.util.Set;
 
 public class PromocionAbsoluta extends Promocion {
 	
 	private double costoTotal;
 
-	public PromocionAbsoluta(String nombre, String tipo, List<Atraccion> atracciones, double costoTotal) {
+	public PromocionAbsoluta(String nombre, String tipo, Set<Atraccion> atracciones, double costoTotal) {
 		super(nombre, tipo, atracciones);
 		this.costoTotal = costoTotal;
 	}

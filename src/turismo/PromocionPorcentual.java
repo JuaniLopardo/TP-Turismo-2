@@ -1,12 +1,12 @@
 package turismo;
 
-import java.util.List;
+import java.util.Set;
 
 public class PromocionPorcentual extends Promocion {
 	
 	private double porcentajeDescuento;
 
-	public PromocionPorcentual(String nombre, String tipo, List<Atraccion> atracciones, double porcentajeDescuento) {
+	public PromocionPorcentual(String nombre, String tipo, Set<Atraccion> atracciones, double porcentajeDescuento) {
 		super(nombre, tipo, atracciones);
 		this.porcentajeDescuento = porcentajeDescuento;
 	}
