@@ -14,7 +14,7 @@ public class PromocionPorcentual extends Promocion {
 	@Override
 	public String getMensajeDePresentacionAlUsuario() {
 		// Mensaje para presentar la promocion. Ejemplo: "Bosque Negro y Mordor con un 20% de descuento si se compran ambas."
-		return "";
+		return "(" + this.getTipo() + ") " + this.getNombre() + ": " + this.porcentajeDescuento + "% OFF! Si compras " + this.getAtraccionesEnumeradasString(getAtraccionesQueIncluye()) + ", pagas solo " + this.getCostoString() +  "!";
 	}
 
 	@Override

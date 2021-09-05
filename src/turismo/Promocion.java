@@ -49,4 +49,19 @@ public abstract class Promocion extends Ofertable {
 		return total;
 	}
 	
+	public String getAtraccionesEnumeradasString(List<Atraccion> atracciones) {
+		String atraccionesEnumeradas = atracciones.get(0).getNombre() + "(" + atracciones.get(0).getCostoString() + ")";
+		int limit = atracciones.size();
+
+		for (int i = 1; i < limit; i++) {
+			Atraccion atraccion = atracciones.get(i);
+			if (i + 2 < limit) {
+				atraccionesEnumeradas = atraccionesEnumeradas + ", " + atraccion.getNombre() + "(" + atraccion.getCostoString() + ")";
+			} else {
+				atraccionesEnumeradas = atraccionesEnumeradas + " y " + atraccion.getNombre() + "(" + atraccion.getCostoString() + ")";
+			}
+		}
+		return atraccionesEnumeradas;
+	}
+	
 }

@@ -24,4 +24,8 @@ public abstract class Ofertable {
 	
 	public abstract String getMensajeDePresentacionAlUsuario();
 	
+	public String getCostoString() {
+		return "$" + this.getCosto();
+	}
+	
 }

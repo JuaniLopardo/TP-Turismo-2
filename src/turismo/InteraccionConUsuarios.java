@@ -42,6 +42,7 @@ public class InteraccionConUsuarios {
 				if (usuario.podriaAceptarOferta(oferta)) {
 					
 					System.out.println(usuario.getNombre() + " podria llegar a aceptar comprar " + oferta);
+					System.out.println(oferta.getMensajeDePresentacionAlUsuario());
 					
 				}
 				

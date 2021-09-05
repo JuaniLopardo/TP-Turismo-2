@@ -19,7 +19,7 @@ public class PromocionAxB extends Promocion {
 	@Override
 	public String getMensajeDePresentacionAlUsuario() {
 		// Mensaje para presentar la promocion. Ejemplo: "Comprando Minas Tirith y el Abismo de Helm, Erebor es gratis."
-		return "";
+		return "(" + this.getTipo() + ") " + this.getNombre() + ": Comprando " + this.getAtraccionesEnumeradasString(atraccionesQueSeCobran) + ", te llevas " + this.getAtraccionesEnumeradasString(atraccionesDeRegalo) + " gratis!";
 	}
 
 	@Override

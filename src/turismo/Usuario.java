@@ -26,7 +26,7 @@ public class Usuario {
 	}
 
 	public boolean podriaAceptarOferta(Ofertable oferta) {
-		return oferta.getCosto() < this.presupuesto && oferta.getDuracion() < this.tiempoDisponible;
+		return oferta.getCosto() <= this.presupuesto && oferta.getDuracion() <= this.tiempoDisponible;
 	}
 	
 	public boolean prefiereEsteTipoDeOferta(Ofertable oferta) {

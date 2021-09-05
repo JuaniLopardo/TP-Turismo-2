@@ -43,7 +43,7 @@ public class Atraccion extends Ofertable {
 
 	@Override
 	public String getMensajeDePresentacionAlUsuario() {
-		return "";
+		return "Visita " + this.getNombre() + " (" + this.getTipo() +  ") por " + this.getCostoString() + "!";
 	}
 	
 }
