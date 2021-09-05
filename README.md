@@ -20,8 +20,8 @@ En `PromocionAxB`, el cuarto valor es la atraccion que se obtiene gratis al comp
 Ejemplo:
 
 ```
-Porcentual, Pack aventura, Aventura, 20, Bosque Negro, Mordor
-Absoluta, Pack degustacion, Degustación, 36, Lothlórien, La Comarca
+Porcentual, Pack aventura, Aventura, 20, Bosque Negro + Mordor
+Absoluta, Pack degustacion, Degustación, 36, Lothlórien + La Comarca
 AxB, Pack paisajes, Paisaje, Erebor, Minas Tirith + Abismo de Helm + Erebor
 ```
 
