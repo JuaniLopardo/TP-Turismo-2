@@ -41,6 +41,8 @@ public class InteraccionConUsuarios {
 				// Solo presenta ofertas que el usuario podria llegar a aceptar por tener suficiente tiempo y dinero.
 				if (usuario.podriaAceptarOferta(oferta)) {
 					
+					System.out.println(usuario.getNombre() + " podria llegar a aceptar comprar " + oferta);
+					
 				}
 				
 			}

@@ -1,5 +1,6 @@
 package turismo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
@@ -17,6 +18,7 @@ public class Usuario {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoDeAtraccionPreferida = tipoDeAtraccionPreferida;
+		this.atraccionesAdquiridas = new ArrayList<Atraccion>();
 	}
 	
 	public String getNombre() {
