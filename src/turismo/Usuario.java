@@ -47,6 +47,14 @@ public class Usuario {
 		this.ofertasAceptadas.add(oferta);
 	}
 	
+	public List<Ofertable> getOfertasAceptadas() {
+		return this.ofertasAceptadas;
+	}
+	
+	public List<Atraccion> getAtraccionesAdquiridas() {
+		return this.atraccionesAdquiridas;
+	}
+	
 	public boolean yaTieneAtraccion(Atraccion atraccion) {
 		return this.atraccionesAdquiridas.contains(atraccion);
 	}

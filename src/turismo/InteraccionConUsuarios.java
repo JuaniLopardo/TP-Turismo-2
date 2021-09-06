@@ -83,7 +83,30 @@ public class InteraccionConUsuarios {
 			}
 			
 			if (realizoUnaCompra) {
+				System.out.println("****************************************************");
 				System.out.println("¡Gracias por tu compra, " + usuario.getNombre() + "!");
+				System.out.println("****************************************************");
+				
+				// Mostrar resumen del itinerario
+				System.out.println("Tu itinerario es: ");
+				
+				double costoItinerario = 0;
+				double horasNecesarias = 0;
+				for (Ofertable oferta : usuario.getOfertasAceptadas()) {
+					costoItinerario += oferta.getCosto();
+					horasNecesarias += oferta.getDuracion();
+				}
+				for (Atraccion atraccion : usuario.getAtraccionesAdquiridas()) {
+					System.out.println(atraccion.getNombre());
+				}
+				
+				System.out.println("Horas totales: " + horasNecesarias);
+				System.out.println("Costo total:   $" + costoItinerario);
+				System.out.println("");
+				
+			} else {
+				// TODO mensaje de despedida cuando no compra nada?
+				
 			}
 		}
 		
