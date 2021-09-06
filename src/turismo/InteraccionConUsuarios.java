@@ -1,24 +1,28 @@
 package turismo;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class InteraccionConUsuarios {
 	
 	private List<Usuario> usuarios;
-	private List<Atraccion> atracciones;
-	private List<Promocion> promociones;
 	private List<Ofertable> ofertables;
 	
+	private List<String> ticketsParaSalida;
+	
 	private ComparadorDeOfertablesConsigna comparadorDeOfertablesConsigna = new ComparadorDeOfertablesConsigna();
+	
+	private DecimalFormat decimalFormat = new DecimalFormat("0.##", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
 
 	public InteraccionConUsuarios(List<Usuario> usuarios, List<Atraccion> atracciones, List<Promocion> promociones) {
-		this.usuarios = usuarios;
-		this.atracciones = atracciones;
-		this.promociones = promociones;
+		this.ticketsParaSalida = new ArrayList<String>();
 		
+		this.usuarios = usuarios;
 		ofertables = new ArrayList<Ofertable>();
 		ofertables.addAll(promociones);
 		ofertables.addAll(atracciones);
@@ -87,19 +91,28 @@ public class InteraccionConUsuarios {
 				System.out.println("¡Gracias por tu compra, " + usuario.getNombre() + "!");
 				System.out.println("****************************************************");
 				
-				// Mostrar resumen del itinerario
-				System.out.println("Tu itinerario es: ");
-				
+				// Recolecta datos de la compra.
 				double costoItinerario = 0;
 				double horasNecesarias = 0;
+				StringBuilder stringBuilderTicket = new StringBuilder();
 				for (Ofertable oferta : usuario.getOfertasAceptadas()) {
+					// Pasar a Usuario?
 					costoItinerario += oferta.getCosto();
 					horasNecesarias += oferta.getDuracion();
+					stringBuilderTicket.append(oferta.getNombre());
+					stringBuilderTicket.append(" + ");
 				}
+				stringBuilderTicket.delete(stringBuilderTicket.length() - 3, stringBuilderTicket.length());
+				stringBuilderTicket.insert(0, usuario.getNombre() + ", " + decimalFormat.format(costoItinerario) + ", " + decimalFormat.format(horasNecesarias) + ", ");
+				
+				// Guarda la informacion para el archivo de salida.
+				this.ticketsParaSalida.add(stringBuilderTicket.toString());
+				
+				// Mostrar resumen del itinerario.
+				System.out.println("Tu itinerario es: ");
 				for (Atraccion atraccion : usuario.getAtraccionesAdquiridas()) {
 					System.out.println(atraccion.getNombre());
 				}
-				
 				System.out.println("Horas totales: " + horasNecesarias);
 				System.out.println("Costo total:   $" + costoItinerario);
 				System.out.println("");
@@ -109,8 +122,7 @@ public class InteraccionConUsuarios {
 				
 			}
 		}
-		
-		// TODO ver que compro cada usuario y hacer los "tickets" de salida para cada uno
+		scanner.close();
 	}
 	
 	private List<Ofertable> getOfertasParaUsuario(Usuario usuario) {
@@ -130,6 +142,10 @@ public class InteraccionConUsuarios {
 		ofertasParaUsuario.addAll(0, ofertasPreferidasDeUsuario);
 		
 		return ofertasParaUsuario;
+	}
+	
+	public List<String> getTicketsParaArchivosDeSalida() {
+		return this.ticketsParaSalida;
 	}
 
 }

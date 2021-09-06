@@ -9,8 +9,6 @@ public class App {
 		
 		try {
 			lectorArchivosEntrada = new LectorArchivosEntrada("Entrada/Usuarios.csv", "Entrada/Atracciones.csv", "Entrada/Promociones.csv");
-			
-			
 		} catch (IOException exception) {
 			exception.printStackTrace();
 		}
@@ -22,6 +20,12 @@ public class App {
 					lectorArchivosEntrada.getPromociones()
 			);
 			interaccionConUsuario.hacerLoop();
+			
+			ImpresoraDeTickets impresoraDeTickets = new ImpresoraDeTickets(
+					lectorArchivosEntrada.getUsuarios(),
+					interaccionConUsuario.getTicketsParaArchivosDeSalida()
+			);
+			impresoraDeTickets.imprimirTickets();
 		}
 	}
 
