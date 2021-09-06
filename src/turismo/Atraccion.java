@@ -13,15 +13,13 @@ public class Atraccion extends Ofertable {
 		this.cupo = cupoDiario;
 	}
 	
-	public boolean tieneCupo() {
-		return this.cupo > 0;
-	}
-	
+	@Override
 	public void reducirCupo() {
 		this.cupo -= 1;
 	}
 	
-	public int getCupoDiario() {
+	@Override
+	public int getCupo() {
 		return this.cupo;
 	}
 
@@ -43,7 +41,17 @@ public class Atraccion extends Ofertable {
 
 	@Override
 	public String getMensajeDePresentacionAlUsuario() {
-		return "Visita " + this.getNombre() + " (" + this.getTipo() +  ") por " + this.getCostoString() + "!";
+		return "Visitar " + this.getNombre() + " (" + this.getTipo() +  ") por " + this.getCostoString() + "!";
+	}
+	
+	@Override
+	public String getMensajeDeDetallesParaElUsuario() {
+		return "La atraccion es de tipo " + this.getTipo() + " y vas a necesitar " + this.getDuracion() + " horas para visitarla.";
+	}
+
+	@Override
+	public String getTipoDeOfertable() {
+		return "atraccion";
 	}
 	
 }

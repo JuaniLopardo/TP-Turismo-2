@@ -1,6 +1,7 @@
 package turismo;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -62,6 +63,35 @@ public abstract class Promocion extends Ofertable {
 			}
 		}
 		return atraccionesEnumeradas;
+	}
+
+	@Override
+	public String getTipoDeOfertable() {
+		return "promocion";
+	}
+	
+	@Override
+	public int getCupo() {
+		// El cupo de una promocion es el cupo mas chico entre las atracciones que ofrece.
+		int cupo = this.atraccionesQueIncluye.get(0).getCupo();
+		for (Atraccion atraccion : this.atraccionesQueIncluye) {
+			if (atraccion.getCupo() < cupo) {
+				cupo = atraccion.getCupo();
+			}
+		}
+		return cupo;
+	}
+	
+	@Override
+	public void reducirCupo() {
+		for (Atraccion atraccion : this.atraccionesQueIncluye) {
+			atraccion.reducirCupo();
+		}
+	}
+	
+	@Override
+	public String getMensajeDeDetallesParaElUsuario() {
+		return "Las atracciones son de tipo " + this.getTipo() + " y vas a necesitar " + this.getDuracion() + " horas para visitarlas.";
 	}
 	
 }

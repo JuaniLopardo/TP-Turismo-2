@@ -18,14 +18,26 @@ public abstract class Ofertable {
 		return tipo;
 	}
 	
+	public boolean tieneCupo() {
+		return this.getCupo() > 0;
+	}
+	
+	public abstract void reducirCupo();
+	
 	public abstract double getCosto();
 	
 	public abstract double getDuracion();
 	
 	public abstract String getMensajeDePresentacionAlUsuario();
 	
+	public abstract String getMensajeDeDetallesParaElUsuario();
+	
 	public String getCostoString() {
 		return "$" + this.getCosto();
 	}
+	
+	public abstract String getTipoDeOfertable();
+	
+	public abstract int getCupo();
 	
 }

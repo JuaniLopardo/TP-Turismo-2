@@ -19,6 +19,7 @@ public class Usuario {
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoDeAtraccionPreferida = tipoDeAtraccionPreferida;
 		this.atraccionesAdquiridas = new ArrayList<Atraccion>();
+		this.ofertasAceptadas = new ArrayList<Ofertable>();
 	}
 	
 	public String getNombre() {
