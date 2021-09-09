@@ -41,6 +41,11 @@ public class LectorArchivosEntrada {
 		linea = bufferedReader.readLine();
 		
 		while (linea != null) {
+			if (linea.isBlank()) {
+				linea = bufferedReader.readLine();
+				continue;
+			} 
+			
 			List<String> valoresEnLinea = new ArrayList<String>();
 			
 			for (String valor : linea.split(",")) {
