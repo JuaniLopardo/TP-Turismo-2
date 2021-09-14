@@ -39,10 +39,14 @@ public class Usuario {
 		this.tiempoDisponible -= oferta.getDuracion();
 		if (oferta instanceof Promocion) {
 			for (Atraccion atraccion: ((Promocion) oferta).getAtraccionesQueIncluye()) {
-				this.atraccionesAdquiridas.add(atraccion);
+				if (!this.yaTieneAtraccion(atraccion)) {
+					this.atraccionesAdquiridas.add(atraccion);
+				}
 			}
 		} else {
-			this.atraccionesAdquiridas.add((Atraccion) oferta);
+			if (!this.yaTieneAtraccion((Atraccion) oferta)) {
+				this.atraccionesAdquiridas.add((Atraccion) oferta);
+			}
 		}
 		this.ofertasAceptadas.add(oferta);
 	}
