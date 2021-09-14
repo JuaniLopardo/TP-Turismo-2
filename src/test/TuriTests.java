@@ -33,7 +33,7 @@ public class TuriTests {
 		assertFalse(tester.prefiereEsteTipoDeOferta(degustest));
 
 	}
-	
+
 //	@Test
 //	public void AtracciónBajaCupo() {
 //		
@@ -44,6 +44,16 @@ public class TuriTests {
 //		
 //		
 //	}
+
+	@Test
+	public void UsuarioBajaPresupuesto() {
+	
+		Usuario tester = new Usuario("Tester", 200, 24, "Aventura");
+		Atraccion aventutest = new Atraccion("Avetutest", 15, 12, 4, "Aventura");
+		tester.aceptarOferta(aventutest);
+		assertEquals(185,tester.getPresupuesto());
+	
+	}
 	
 	
 
