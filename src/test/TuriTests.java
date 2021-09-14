@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.Test;
@@ -33,15 +34,16 @@ public class TuriTests {
 
 	}
 	
-	@Test
-	public void AtracciónBajaCupo() {
-		
-		Usuario tester = new Usuario("Tester", 200, 24, "Aventura");
-		Atraccion aventutest = new Atraccion("Avetutest", 15, 12, 4, "Aventura");
-		tester.aceptarOferta(aventutest);
-		
-		
-	}
+//	@Test
+//	public void AtracciónBajaCupo() {
+//		
+//		Usuario tester = new Usuario("Tester", 200, 24, "Aventura");
+//		Atraccion aventutest = new Atraccion("Avetutest", 15, 12, 4, "Aventura");
+//		tester.aceptarOferta(aventutest);
+//		assertEquals(3,aventutest.getCupo());
+//		
+//		
+//	}
 	
 	
 
