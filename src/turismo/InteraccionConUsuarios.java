@@ -50,6 +50,20 @@ public class InteraccionConUsuarios {
 					continue;
 				}
 				
+				// Si la oferta es una promocion y el usuario ya adquirio alguna de las atracciones de la promocion, ignora
+				// esta oferta y pasa a la siguiente.
+				if (oferta instanceof Promocion) {
+					boolean ignorarEstaOferta = false;
+					for (Atraccion atraccion : ((Promocion) oferta).getAtraccionesQueIncluye()) {
+						if (usuario.yaTieneAtraccion(atraccion)) {
+							ignorarEstaOferta = true;
+						}
+					}
+					if (ignorarEstaOferta) {
+						continue;
+					}
+				}
+				
 				// Solo presentar la oferta si tiene cupo.
 				if (!oferta.tieneCupo()) {
 					continue;
