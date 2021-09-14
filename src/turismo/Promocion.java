@@ -20,7 +20,7 @@ public abstract class Promocion extends Ofertable {
 		return this.atraccionesQueIncluye;
 	}
 	
-	public void actualizarEstado( ) {
+	public void actualizarEstado() {
 		for (Atraccion atraccion : this.atraccionesQueIncluye) {
 			if (!atraccion.tieneCupo()) {
 				this.agotada = true;
