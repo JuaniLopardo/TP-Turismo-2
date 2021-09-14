@@ -2,7 +2,7 @@ Nombre, Costo, Duracion En Horas, Cupo, Tipo
 Mar de Rhun, 50, 23, 11, Degustacion
 Fortaleza de Hierro, 15, 4, 25, Degustacion
 Torre Oscura, 30, 3, 15, Degustacion
-Montañas Grises, 20, 9, 10, Aventura
+Sierras Grises, 20, 9, 10, Aventura
 Bahia de Hielo de Forochel, 6, 3, 20, Paisaje
 Monte del Fuego Resplandeciente, 30, 20, 3, Aventura
 Bosque Viejo, 15, 10, 12, Paisaje
@@ -12,6 +12,6 @@ Minas Tirith, 5, 2.5, 25, Paisaje
 La Comarca, 3, 6.5, 150, Degustacion
 Mordor, 25, 3, 4, Aventura
 Abismo de Helm, 5, 2, 15, Paisaje
-Lothlórien, 35, 1, 30, Degustacion
+Lothlorien, 35, 1, 30, Degustacion
 Erebor, 12, 3, 32, Paisaje
 Bosque Negro, 3, 4, 12, Aventura

@@ -13,7 +13,7 @@ public class PromocionAbsoluta extends Promocion {
 
 	@Override
 	public String getMensajeDePresentacionAlUsuario() {
-		// Mensaje para presentar la promocion. Ejemplo: "Lothlórien y La Comarca a 36 monedas."
+		// Mensaje para presentar la promocion. Ejemplo: "Lothlorien y La Comarca a 36 monedas."
 		return this.getNombre() + ": Pagando $" + this.costoTotal + ", te llevas " + this.getAtraccionesEnumeradasString(getAtraccionesQueIncluye()) + "!";
 	}
 

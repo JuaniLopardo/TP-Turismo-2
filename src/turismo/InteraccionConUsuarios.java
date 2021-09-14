@@ -38,7 +38,7 @@ public class InteraccionConUsuarios {
 		for (Usuario usuario : this.usuarios) {
 			List<Ofertable> ofertasParaUsuario = getOfertasParaUsuario(usuario);
 			
-			System.out.println("Â¡Bienvenide " + usuario.getNombre() + "! Hoy podemos ofrecerte...");
+			System.out.println("¡Bienvenide " + usuario.getNombre() + "! Hoy podemos ofrecerte...");
 			
 			boolean realizoUnaCompra = false;
 			
@@ -80,7 +80,7 @@ public class InteraccionConUsuarios {
 					while (!si && !no) {
 						System.out.println(oferta.getMensajeDePresentacionAlUsuario());
 						System.out.println(oferta.getMensajeDeDetallesParaElUsuario());
-						System.out.println("Â¿Queres comprar esta " + oferta.getTipoDeOfertable() + "? (Si/No)");
+						System.out.println("¿Queres comprar esta " + oferta.getTipoDeOfertable() + "? (Si/No)");
 						respuesta = scanner.nextLine();
 						si = respuesta.toLowerCase().contains("si");
 						no = respuesta.toLowerCase().contains("no");
@@ -102,7 +102,7 @@ public class InteraccionConUsuarios {
 			
 			if (realizoUnaCompra) {
 				System.out.println("****************************************************");
-				System.out.println("Â¡Gracias por tu compra, " + usuario.getNombre() + "!");
+				System.out.println("¡Gracias por tu compra, " + usuario.getNombre() + "!");
 				System.out.println("****************************************************");
 				
 				// Recolecta datos de la compra.
