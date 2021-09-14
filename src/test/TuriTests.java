@@ -55,6 +55,24 @@ public class TuriTests {
 	
 	}
 	
+	@Test
+	public void UsuarioBajaTiempoDisponible() {
+	
+		Usuario tester = new Usuario("Tester", 200, 24, "Aventura");
+		Atraccion aventutest = new Atraccion("Avetutest", 15, 12, 4, "Aventura");
+		tester.aceptarOferta(aventutest);
+		assertEquals(12,tester.getTiempoDisponible());
+	
+	}
+	
+	@Test
+	public void yaTieneAtraccion() {
+	
+		Usuario tester = new Usuario("Tester", 200, 24, "Aventura");
+		Atraccion aventutest = new Atraccion("Avetutest", 15, 12, 4, "Aventura");
+		tester.aceptarOferta(aventutest);
+		assertTrue(tester.yaTieneAtraccion(aventutest));
+	}
 	
 
 }
