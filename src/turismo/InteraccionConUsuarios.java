@@ -101,7 +101,7 @@ public class InteraccionConUsuarios {
 						usuario.aceptarOferta(oferta);
 						oferta.reducirCupo();
 						realizoUnaCompra = true;
-					} else if (no) {
+					} else if (no && oferta != ofertasParaUsuario.get(ofertasParaUsuario.size() - 1)) {
 						System.out.println("En tal caso, tal vez pueda interesarte...");
 					}
 					
@@ -140,7 +140,8 @@ public class InteraccionConUsuarios {
 				System.out.println("");
 				
 			} else {
-				// TODO mensaje de despedida cuando no compra nada?
+				// mensaje de despedida cuando no compra nada?
+				System.out.println("Hasta pronto!");
 				
 			}
 		}
