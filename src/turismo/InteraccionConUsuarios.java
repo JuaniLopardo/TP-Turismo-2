@@ -38,7 +38,7 @@ public class InteraccionConUsuarios {
 		for (Usuario usuario : this.usuarios) {
 			List<Ofertable> ofertasParaUsuario = getOfertasParaUsuario(usuario);
 			
-			System.out.println("¡Bienvenide " + usuario.getNombre() + "! Hoy podemos ofrecerte...");
+			System.out.println("Bienvenide " + usuario.getNombre() + "! Hoy podemos ofrecerte...");
 			
 			boolean realizoUnaCompra = false;
 			
@@ -52,17 +52,25 @@ public class InteraccionConUsuarios {
 				
 				// Si la oferta es una promocion y el usuario ya adquirio alguna de las atracciones de la promocion, ignora
 				// esta oferta y pasa a la siguiente.
-//				if (oferta instanceof Promocion) {
-//					boolean ignorarEstaOferta = false;
-//					for (Atraccion atraccion : ((Promocion) oferta).getAtraccionesQueIncluye()) {
-//						if (usuario.yaTieneAtraccion(atraccion)) {
-//							ignorarEstaOferta = true;
-//						}
-//					}
-//					if (ignorarEstaOferta) {
-//						continue;
-//					}
-//				}
+				//
+				// Esto se podria sacar y se respetaria igual la consigna, pero el profesor Federico Gasior dijo que no deberia
+				// ofrecerse una promocion que incluya una atraccion previamente adquirida por el usuario.
+				// En un escenario donde se le ofrece una promocion al usuario que incluye 5 atracciones a un precio determinado o
+				// con descuento, y el usuario ya posee una de esas atracciones, quiza le convendria igual comprar la promocion
+				// para obtener las otras 4 que no tiene a un precio especial.
+///*
+				if (oferta instanceof Promocion) {
+					boolean ignorarEstaOferta = false;
+					for (Atraccion atraccion : ((Promocion) oferta).getAtraccionesQueIncluye()) {
+						if (usuario.yaTieneAtraccion(atraccion)) {
+							ignorarEstaOferta = true;
+						}
+					}
+					if (ignorarEstaOferta) {
+						continue;
+					}
+				}
+//*/
 				
 				// Solo presentar la oferta si tiene cupo.
 				if (!oferta.tieneCupo()) {
@@ -80,7 +88,7 @@ public class InteraccionConUsuarios {
 					while (!si && !no) {
 						System.out.println(oferta.getMensajeDePresentacionAlUsuario());
 						System.out.println(oferta.getMensajeDeDetallesParaElUsuario());
-						System.out.println("¿Queres comprar esta " + oferta.getTipoDeOfertable() + "? (Si/No)");
+						System.out.println("Queres comprar esta " + oferta.getTipoDeOfertable() + "? (Si/No)");
 						respuesta = scanner.nextLine();
 						si = respuesta.toLowerCase().contains("si");
 						no = respuesta.toLowerCase().contains("no");
@@ -102,7 +110,7 @@ public class InteraccionConUsuarios {
 			
 			if (realizoUnaCompra) {
 				System.out.println("****************************************************");
-				System.out.println("¡Gracias por tu compra, " + usuario.getNombre() + "!");
+				System.out.println("Gracias por tu compra, " + usuario.getNombre() + "!");
 				System.out.println("****************************************************");
 				
 				// Recolecta datos de la compra.
@@ -139,7 +147,7 @@ public class InteraccionConUsuarios {
 		scanner.close();
 	}
 	
-	private List<Ofertable> getOfertasParaUsuario(Usuario usuario) {
+	public List<Ofertable> getOfertasParaUsuario(Usuario usuario) {
 		List<Ofertable> ofertasParaUsuario = new ArrayList<Ofertable>();
 		List<Ofertable> ofertasPreferidasDeUsuario = new ArrayList<Ofertable>();
 		

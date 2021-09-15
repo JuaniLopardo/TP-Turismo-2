@@ -23,9 +23,9 @@ public class LectorArchivosEntrada {
 	static String PROMOCION_AxB = "AxB";
 	
 	public LectorArchivosEntrada(String nombreDeArchivoDeUsuarios, String nombreDeArchivoDeAtracciones, String nombreDeArchivoDePromociones) throws IOException {
-		List<List<String>> listaDeDatosDeUsuarios = getContenidoDeCSV("Entrada/Usuarios.csv");
-		List<List<String>> listaDeDatosDeAtracciones = getContenidoDeCSV("Entrada/Atracciones.csv");
-		List<List<String>> listaDeDatosDePromociones = getContenidoDeCSV("Entrada/Promociones.csv");
+		List<List<String>> listaDeDatosDeUsuarios = getContenidoDeCSV(nombreDeArchivoDeUsuarios);
+		List<List<String>> listaDeDatosDeAtracciones = getContenidoDeCSV(nombreDeArchivoDeAtracciones);
+		List<List<String>> listaDeDatosDePromociones = getContenidoDeCSV(nombreDeArchivoDePromociones);
 		
 		construirUsuariosCon(listaDeDatosDeUsuarios);
 		construirAtraccionesCon(listaDeDatosDeAtracciones);
