@@ -17,7 +17,7 @@ import turismo.Ofertable;
 import turismo.Promocion;
 import turismo.Usuario;
 
-public class TuriTests {
+public class TurismoTests {
 	
 	static LectorArchivosEntrada lectorArchivosEntrada;
 
@@ -76,7 +76,7 @@ public class TuriTests {
 	public void queRespetaElOrdenDeOfertasQueDiceLaConsigna() {
 		
 		/*
-"Deberá priorizarse la oferta de promociones, las atracciones más
+"Debera priorizarse la oferta de promociones, las atracciones mas
 caras y que requieran mayor tiempo, en ese orden."
 		 */
 		
